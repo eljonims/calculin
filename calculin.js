@@ -17,9 +17,11 @@ window.addEventListener("load",nuevoProducto);
 
 function tecla( cual )
 {
-	if (cual < 0 && respuesta.length > 0){
-		respuesta.pop();
-		document.getElementById("respuesta").innerHTML=respuesta.join("");
+	if (cual < 0 ){
+		if (respuesta.length > 0){
+			respuesta.pop();
+			document.getElementById("respuesta").innerHTML=respuesta.join("");
+		}
 	}else{
 		respuesta.push(cual);
 		document.getElementById("respuesta").innerHTML=respuesta.join("");
