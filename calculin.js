@@ -2,7 +2,8 @@
 var respuesta = [];
 var factores = [];
 var solucion;
-
+var reloj;
+var tiempo = 2000;
 
 function nuevoProducto(){
 	factores[0] = Math.floor(10 * Math.random());
@@ -10,7 +11,8 @@ function nuevoProducto(){
 	respuesta =[];
 	solucion = factores[0]*factores[1];
 	document.getElementById("pregunta").innerHTML=factores.join(" * ");
-	document.getElementById("respuesta").innerHTML=['😐','😒','😔','😶'][Math.floor(4* Math.random())];	
+	document.getElementById("respuesta").innerHTML=['😐','😒','😶'][Math.floor(3* Math.random())];
+	reloj = setTimeout(timeout,tiempo);
 }
 
 window.addEventListener("load",nuevoProducto);
@@ -26,21 +28,32 @@ function tecla( cual )
 	}else{
 		respuesta.push(cual);
 		document.getElementById("respuesta").innerHTML=respuesta.join("");
+		
 		if( solucion == Number.parseInt(respuesta.join(""))){
-			setTimeout(bravo,0);
+			clearInterval(reloj);
+			setTimeout(bravo,500);
+			
 		}else{
 			if( solucion < 9 || respuesta.length > 1){
-				setTimeout(tomatazo,0);
+				clearInterval(reloj);
+				setTimeout(tomatazo,500);
 			}
 		}		
 	}		
 }
+function timeout(){
+	setTimeout(nuevoProducto,700);
+	document.getElementById("pregunta").innerHTML="L E N T O";
+	document.getElementById("respuesta").innerHTML='😱';
+}
 function bravo(){
 	setTimeout(nuevoProducto,700);
+	document.getElementById("pregunta").innerHTML="B I E N";
 	document.getElementById("respuesta").innerHTML=['😁','😂','😃','😄','😅','😆','😇','😉','😊','😋','😌','😎','😍','😏','😘','😚'][Math.floor( 16 * Math.random())];
 }
 function tomatazo(){
 	setTimeout(nuevoProducto,700);
-	document.getElementById("respuesta").innerHTML=['😖','😝','😞','😠','😡','😢','😣','😥,','😨','😩','😪','😫','😭','😰','😱','😲','😳','😵'][Math.floor(18* Math.random())];;
+	document.getElementById("pregunta").innerHTML="M A L";
+	document.getElementById("respuesta").innerHTML=['😔','😖','😝','😞','😠','😡','😢','😣','😥','😨','😩','😪','😫','😭','😰','😲','😳','😵'][Math.floor(18* Math.random())];;
 	//"😖😝😞😠😡😢😣😥😨😩😪😫😭😰😱😲😳😵"
 }
