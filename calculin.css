@@ -45,7 +45,7 @@ body{
 }
 
 .tecla:nth-child(13){
-	font-size: 6em;
+	font-size: 4.5em;
 	background: rgba(199, 190, 187, .2);
 	color: #ca2a2a;
 }
@@ -65,7 +65,6 @@ body{
 	font-weight: 400;
 	font-style: normal;
 	font-size: 6em;
-	letter-spacing: 21px;
 	word-spacing: 1em;
 	
 	color: #2a1e1e;
