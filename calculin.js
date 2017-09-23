@@ -4,15 +4,20 @@ var factores = [];
 var solucion;
 var reloj;
 var tiempo = 2000;
+var aTiempo;
 
 function nuevoProducto(){
+	aTiempo = false;
 	factores[0] = Math.floor(10 * Math.random());
 	factores[1] = Math.floor(10 * Math.random());
 	respuesta =[];
 	solucion = factores[0]*factores[1];
 	document.getElementById("pregunta").innerHTML=factores.join(" * ");
 	document.getElementById("respuesta").innerHTML=['😐','😒','😶'][Math.floor(3* Math.random())];
+	
+	clearInterval(reloj);
 	reloj = setTimeout(timeout,tiempo);
+	
 }
 
 window.addEventListener("load",nuevoProducto);
@@ -30,21 +35,23 @@ function tecla( cual )
 		document.getElementById("respuesta").innerHTML=respuesta.join("");
 		
 		if( solucion == Number.parseInt(respuesta.join(""))){
-			clearInterval(reloj);
+			aTiempo = true;
 			setTimeout(bravo,500);
 			
 		}else{
 			if( solucion < 9 || respuesta.length > 1){
-				clearInterval(reloj);
+				aTiempo = true;
 				setTimeout(tomatazo,500);
 			}
 		}		
 	}		
 }
 function timeout(){
-	setTimeout(nuevoProducto,700);
-	document.getElementById("pregunta").innerHTML="L E N T O";
-	document.getElementById("respuesta").innerHTML='😱';
+	if(!aTiempo){
+		setTimeout(nuevoProducto,700);
+		document.getElementById("pregunta").innerHTML="L E N T O";
+		document.getElementById("respuesta").innerHTML='😱';
+	}
 }
 function bravo(){
 	setTimeout(nuevoProducto,700);
