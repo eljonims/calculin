@@ -47,6 +47,7 @@ body{
 	font-size: 4em;
 	background: rgba(199, 190, 187, .2);
 	color: #ca2a2a;
+	font-size: 1.2rem;
 }
 
 .pregunta{
@@ -61,7 +62,7 @@ body{
 	align-items: center;
 	
 	
-	
+	font-size: 3rem;
 	color: #2a1e1e;
 	background: #aaafa1;
 }
