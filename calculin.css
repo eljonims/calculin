@@ -15,6 +15,8 @@ body{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	
+	font-size: 4vw;
 
 }
 
@@ -24,10 +26,6 @@ body{
 	background: rgba(199, 190, 187, 0.5);
 	color: #cacaca;
 	
-	font-family: Arial;
-	font-weight: 300;
-	font-style: normal;
-	font-size: 4em;
 	
 	 
 	width: 32%;
@@ -61,10 +59,6 @@ body{
 	justify-content: center;
 	align-items: center;
 	
-	font-family: Arial;
-	font-weight: 400;
-	font-style: normal;
-	font-size: 4em;
 	
 	
 	color: #2a1e1e;
@@ -81,14 +75,14 @@ body{
 	justify-content: center;
 	align-items: center;
 	
-	
+	/*
 	font-family: Arial;
 	font-weight: 400;
 	font-style: normal;
 	font-size: 3em;
 	letter-spacing: 21px;
 	word-spacing: 0px;
-	
+	*/
 	color: #271e1e;
 	background: #aaaf61;
 
