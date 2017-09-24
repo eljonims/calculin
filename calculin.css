@@ -46,8 +46,8 @@ body{
 .tecla:nth-child(13){
 	font-size: 4em;
 	background: rgba(199, 190, 187, .2);
-	color: #ca2a2a;
-	font-size: 1.2rem;
+	color: #aaa;
+	font-size: 2.5rem;
 }
 
 .pregunta{

@@ -1,51 +1,49 @@
 
-var respuesta = [];
-var factores = [];
+var respuesta;
+var factores=[];
 var solucion;
 var respuestaCompletada;
 var tiempo = 3000;
 var nuevoProductoProgramado;
 window.alert("versión 1.0.1");
+var aceptarMasEntrada = false;
 function nuevoProducto(){
-	clearTimeout(nuevoProductoProgramado);
-	respuestaCompletada = false;
-	respuesta =[];
-	document.getElementById("respuesta").innerHTML=['😐','😒','😶'][Math.floor(3* Math.random())];
+	
 	
 	factores[0] = Math.floor(10 * Math.random());
 	factores[1] = Math.floor(10 * Math.random());
-	solucion = factores[0]*factores[1];
+	solucion = Array.from("" + factores[0]*factores[1]);
 	document.getElementById("pregunta").innerHTML=factores.join(" * ");
 	
-	setTimeout(timeout,tiempo);
+	respuesta =[];
+	document.getElementById("respuesta").innerHTML=['😐','😒','😶'][Math.floor(3* Math.random())];
 	
+	aceptarMasEntrada = true;
 }
 
 window.addEventListener("load",nuevoProducto);
 
 
-function tecla( cual )
-{
-	if (cual < 0 ){
-		if (respuesta.length > 0){
-			respuesta.pop();
-			document.getElementById("respuesta").innerHTML=respuesta.join("");
-		}
-	}else{
-		respuesta.push(cual);
-		document.getElementById("respuesta").innerHTML=respuesta.join("");
-		
-		if( solucion == Number.parseInt(respuesta.join(""))){
-			respuestaCompletada = true;
+function tecla( cual ){
+
+	if(!aceptarMasEntrada){
+		return;
+	}
+	aceptarMasEntrada = false; //se interrumpe la entrada de digitos con cada
+				//tecla pulsada. si la respuesta va construyendo correctamente se permite
+				//completarla
+	respuesta.push(cual);
+	document.getElementById("respuesta").innerHTML=respuesta.join("");
+	
+	if(respuesta.some((v,i)=>solucion[i]!=v)){//en cuanto hay un digito que no coincide la respuesta es incorrecta
+		setTimeout(tomatazo,500);
+	}else{ //todos los digitos introducidos son correctos hasta ahora
+		if(respuesta.length == solucion.length){//solucion completa
 			setTimeout(bravo,500);
-			
-		}else{
-			if( solucion < 9 || respuesta.length > 1){
-				respuestaCompletada = true;
-				setTimeout(tomatazo,500);
-			}
-		}		
-	}		
+		}else{//solucion parcial
+			aceptarMasEntrada = true; //se puede completar la respuesta
+		}
+	}
 }
 function timeout(){
 	if(!respuestaCompletada){
