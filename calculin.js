@@ -4,9 +4,10 @@ var factores = [];
 var solucion;
 var respuestaCompletada;
 var tiempo = 3000;
+var nuevoProductoProgramado;
 
 function nuevoProducto(){
-
+	clearTimeout(nuevoProductoProgramado);
 	respuestaCompletada = false;
 	respuesta =[];
 	document.getElementById("respuesta").innerHTML=['😐','😒','😶'][Math.floor(3* Math.random())];
@@ -48,19 +49,19 @@ function tecla( cual )
 }
 function timeout(){
 	if(!respuestaCompletada){
-		setTimeout(nuevoProducto,700);
+		nuevoProductoProgramado = setTimeout(nuevoProducto,700);
 		document.getElementById("pregunta").innerHTML="L E N T O";
 		document.getElementById("respuesta").innerHTML='😱';
 	}
 	
 }
 function bravo(){
-	setTimeout(nuevoProducto,700);
+	nuevoProductoProgramado = setTimeout(nuevoProducto,700);
 	document.getElementById("pregunta").innerHTML="B I E N";
 	document.getElementById("respuesta").innerHTML=['😁','😂','😃','😄','😅','😆','😇','😉','😊','😋','😌','😎','😍','😏','😘','😚'][Math.floor( 16 * Math.random())];
 }
 function tomatazo(){
-	setTimeout(nuevoProducto,700);
+	nuevoProductoProgramado = setTimeout(nuevoProducto,700);
 	document.getElementById("pregunta").innerHTML="M A L";
 	document.getElementById("respuesta").innerHTML=['😔','😖','😝','😞','😠','😡','😢','😣','😥','😨','😩','😪','😫','😭','😰','😲','😳','😵'][Math.floor(18* Math.random())];;
 	//"😖😝😞😠😡😢😣😥😨😩😪😫😭😰😱😲😳😵"
