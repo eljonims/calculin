@@ -1,4 +1,5 @@
 
+//⚖☠♬♪⌬⌚⚙⟳
 var timeout;
 var respuesta;
 var factores=[];
@@ -66,4 +67,17 @@ function tomatazo(){
 	document.getElementById("pregunta").innerHTML="M A L";
 	document.getElementById("respuesta").innerHTML=['😔','😖','😝','😞','😠','😡','😢','😣','😥','😨','😩','😪','😫','😭','😰','😲','😳','😵'][Math.floor(18* Math.random())];;
 	//"😖😝😞😠😡😢😣😥😨😩😪😫😭😰😱😲😳😵"
+}
+function opciones(){
+	document.getElementById("uno").innerHTML="♪";
+	document.getElementById("dos").innerHTML="⚖";
+	document.getElementById("tres").innerHTML="";
+	document.getElementById("cuatro").innerHTML="";
+	document.getElementById("cinco").innerHTML="";
+	document.getElementById("seis").innerHTML="";
+	document.getElementById("siete").innerHTML="";
+	document.getElementById("ocho").innerHTML="";
+	document.getElementById("nueve").innerHTML="";
+	document.getElementById("cero").innerHTML="volver";
+	document.getElementById("opciones").innerHTML="";
 }
