@@ -6,8 +6,9 @@ var factores=[];
 var solucion;
 var tiempo = 3000;
 var nuevoProductoProgramado;
-window.alert("versión 1.0.1");
+window.alert("versión 1.0.2");
 var aceptarMasEntrada = false;
+var modo="normal";
 function nuevoProducto(){
 	
 	
@@ -29,7 +30,7 @@ window.addEventListener("load",nuevoProducto);
 
 function tecla( cual ){
 
-	if(!aceptarMasEntrada){
+	if(!aceptarMasEntrada || !(modo == "normal")){
 		return;
 	}
 	aceptarMasEntrada = false; //se interrumpe la entrada de digitos con cada
@@ -69,15 +70,34 @@ function tomatazo(){
 	//"😖😝😞😠😡😢😣😥😨😩😪😫😭😰😱😲😳😵"
 }
 function opciones(){
-	document.getElementById("uno").innerHTML="♪";
-	document.getElementById("dos").innerHTML="⚖";
-	document.getElementById("tres").innerHTML="";
-	document.getElementById("cuatro").innerHTML="";
-	document.getElementById("cinco").innerHTML="";
-	document.getElementById("seis").innerHTML="";
-	document.getElementById("siete").innerHTML="";
-	document.getElementById("ocho").innerHTML="";
-	document.getElementById("nueve").innerHTML="";
-	document.getElementById("cero").innerHTML="volver";
-	document.getElementById("opciones").innerHTML="";
+	modo = (modo == "normal")?"opciones":"normal";
+	
+	if( modo == "opciones"){
+		clearTimeout(timeout);
+		document.getElementById("pregunta").innerHTML="OPCIONES";
+		document.getElementById("respuesta").innerHTML=""
+		document.getElementById("uno").innerHTML="♪";
+		document.getElementById("dos").innerHTML="⚖";
+		document.getElementById("tres").innerHTML="";
+		document.getElementById("cuatro").innerHTML="";
+		document.getElementById("cinco").innerHTML="";
+		document.getElementById("seis").innerHTML="";
+		document.getElementById("siete").innerHTML="";
+		document.getElementById("ocho").innerHTML="";
+		document.getElementById("nueve").innerHTML="nivel";
+		document.getElementById("cero").innerHTML="tabla";
+		document.getElementById("opciones").innerHTML="<<";
+	}else{
+		document.getElementById("uno").innerHTML="1";
+		document.getElementById("dos").innerHTML="2";
+		document.getElementById("tres").innerHTML="3";
+		document.getElementById("cuatro").innerHTML="4";
+		document.getElementById("cinco").innerHTML="5";
+		document.getElementById("seis").innerHTML="6";
+		document.getElementById("siete").innerHTML="7";
+		document.getElementById("ocho").innerHTML="8";
+		document.getElementById("nueve").innerHTML="9";
+		document.getElementById("cero").innerHTML="0";
+		document.getElementById("opciones").innerHTML="✱";
+	}
 }
