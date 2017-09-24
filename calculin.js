@@ -2,21 +2,21 @@
 var respuesta = [];
 var factores = [];
 var solucion;
-var reloj;
-var tiempo = 2000;
-var aTiempo;
+var respuestaCompletada;
+var tiempo = 3000;
 
 function nuevoProducto(){
-	aTiempo = false;
-	factores[0] = Math.floor(10 * Math.random());
-	factores[1] = Math.floor(10 * Math.random());
+
+	respuestaCompletada = false;
 	respuesta =[];
-	solucion = factores[0]*factores[1];
-	document.getElementById("pregunta").innerHTML=factores.join(" * ");
 	document.getElementById("respuesta").innerHTML=['😐','😒','😶'][Math.floor(3* Math.random())];
 	
-	clearInterval(reloj);
-	reloj = setTimeout(timeout,tiempo);
+	factores[0] = Math.floor(10 * Math.random());
+	factores[1] = Math.floor(10 * Math.random());
+	solucion = factores[0]*factores[1];
+	document.getElementById("pregunta").innerHTML=factores.join(" * ");
+	
+	setTimeout(timeout,tiempo);
 	
 }
 
@@ -35,23 +35,24 @@ function tecla( cual )
 		document.getElementById("respuesta").innerHTML=respuesta.join("");
 		
 		if( solucion == Number.parseInt(respuesta.join(""))){
-			aTiempo = true;
+			respuestaCompletada = true;
 			setTimeout(bravo,500);
 			
 		}else{
 			if( solucion < 9 || respuesta.length > 1){
-				aTiempo = true;
+				respuestaCompletada = true;
 				setTimeout(tomatazo,500);
 			}
 		}		
 	}		
 }
 function timeout(){
-	if(!aTiempo){
+	if(!respuestaCompletada){
 		setTimeout(nuevoProducto,700);
 		document.getElementById("pregunta").innerHTML="L E N T O";
 		document.getElementById("respuesta").innerHTML='😱';
 	}
+	
 }
 function bravo(){
 	setTimeout(nuevoProducto,700);
