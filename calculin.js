@@ -1,8 +1,8 @@
 
+var timeout;
 var respuesta;
 var factores=[];
 var solucion;
-var respuestaCompletada;
 var tiempo = 3000;
 var nuevoProductoProgramado;
 window.alert("versión 1.0.1");
@@ -19,6 +19,8 @@ function nuevoProducto(){
 	document.getElementById("respuesta").innerHTML=['😐','😒','😶'][Math.floor(3* Math.random())];
 	
 	aceptarMasEntrada = true;
+	
+	timeout = setTimeout(timeoutFn,2000);
 }
 
 window.addEventListener("load",nuevoProducto);
@@ -36,21 +38,22 @@ function tecla( cual ){
 	document.getElementById("respuesta").innerHTML=respuesta.join("");
 	
 	if(respuesta.some((v,i)=>solucion[i]!=v)){//en cuanto hay un digito que no coincide la respuesta es incorrecta
+		clearTimeout(timeout);
 		setTimeout(tomatazo,500);
 	}else{ //todos los digitos introducidos son correctos hasta ahora
 		if(respuesta.length == solucion.length){//solucion completa
+			clearTimeout(timeout);
 			setTimeout(bravo,500);
 		}else{//solucion parcial
 			aceptarMasEntrada = true; //se puede completar la respuesta
 		}
 	}
 }
-function timeout(){
-	if(!respuestaCompletada){
-		nuevoProductoProgramado = setTimeout(nuevoProducto,700);
-		document.getElementById("pregunta").innerHTML="L E N T O";
-		document.getElementById("respuesta").innerHTML='😱';
-	}
+function timeoutFn(){
+	aceptarMasEntrada = false;
+	nuevoProductoProgramado = setTimeout(nuevoProducto,700);
+	document.getElementById("pregunta").innerHTML="L E N T O";
+	document.getElementById("respuesta").innerHTML='😱';
 	
 }
 function bravo(){
