@@ -5,7 +5,7 @@ var solucion;
 var respuestaCompletada;
 var tiempo = 3000;
 var nuevoProductoProgramado;
-
+window.alert("versión 1.0.1");
 function nuevoProducto(){
 	clearTimeout(nuevoProductoProgramado);
 	respuestaCompletada = false;
